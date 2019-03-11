@@ -7,7 +7,7 @@ do
     tables=`beeline --showheader=false --outputformat=dsv --silent=true --verbose=false -u jdbc:hive2://localhost:10000/ -e "use $database; show tables"`
     echo "====================database $database :: " >> result.sql
 	echo "create database $database;" >> result.sql
-	echo "use database $database;" >> result.sql
+	echo "use $database;" >> result.sql
     for table in $tables
     do
 	    create=`beeline --showheader=false --outputformat=dsv --silent=true --verbose=false -u jdbc:hive2://localhost:10000/ -e "use $database; show create table $table"`
